@@ -7,13 +7,12 @@ import { NoticeService } from './shared/services/notice.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'mural-avisos';
 
-  constructor(private noticeService: NoticeService){
+  constructor(){
 
   }
 
   ngOnInit() {
-    this.noticeService.getAll().subscribe(dado => console.log(dado));
-   }
+
+  }
 }

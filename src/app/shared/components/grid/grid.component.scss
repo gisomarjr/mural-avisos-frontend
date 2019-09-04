@@ -1,0 +1,64 @@
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import '~ag-grid-community/dist/styles/ag-theme-balham.css';
+
+ag-grid-angular {
+  width: 100%;
+  height: 237px;
+  color:#333;
+}
+
+.ag-header {
+  background: linear-gradient(#fafafa, #d9dbff);
+}
+
+.ag-header-cell {
+  font-weight: bold;
+  color:#333;
+  border: 1px solid #ddd;
+  border-bottom-color: #000;
+  text-align: center;
+}
+
+.ag-cell {
+  border-right:1px solid #ddd !important;
+}
+
+.ag-theme-balham .ag-paging-panel {
+  border-top: 1px solid #000;
+}
+
+.dataTables_filter {
+  float: none;
+  text-align: right;
+}
+
+.dataTables_filter input {
+  display: inline;
+}
+
+.ag-theme-balham .ag-header-cell-label .ag-header-cell-text {
+  white-space: normal;
+}
+
+.ag-theme-balham .ag-header-cell {
+  line-height: inherit;
+  padding-top:10px;
+}
+
+.ag-theme-balham .ag-header-cell::after, .ag-theme-balham .ag-header-group-cell::after {
+  border: 0;
+}
+
+.dataTables_length {
+  float: left;
+}
+
+/*.dataTables_length .form-control {
+  display: inline;
+  width: 50px;
+}*/
+
+
+.pb-8{
+  padding-bottom: 8px;
+}

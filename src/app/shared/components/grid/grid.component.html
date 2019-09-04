@@ -1,0 +1,82 @@
+<div class="row">
+
+  <div class="col-md-6 col-sm-12">
+    <div class="dataTables_length" id="DataTables_Table_0_length">
+      <label>
+
+        <select [(ngModel)]="qtdRegistros" (change)="alterarQtdRegistros()" name="DataTables_Table_0_length"
+          aria-controls="DataTables_Table_0" class="form-control input-sm input-xsmall input-inline">
+
+          <option *ngFor="let i of [5, 10, 15, 20]" [value]="i">{{i}}</option>
+
+        </select> registros</label>
+
+    </div>
+  </div>
+
+  <div class="col-md-6 col-sm-12">
+    <div id="DataTables_Table_0_filter" class="dataTables_filter">
+      <label>
+        Procurar:
+        <input [(ngModel)]="filtro" (keyup)="filtrar()" class="form-control input-sm input-small input-inline"
+          aria-controls="DataTables_Table_0" type="search">
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="pb-8">
+  <ag-grid-angular #grid [rowData]="data" [gridOptions]="gridOptions" [columnDefs]="columnDefs" [enableColResize]="true"
+  [enableSorting]="true" rowHeight="50" headerHeight="55" enableColResize="true" pagination="true" (gridReady)="onGridReady($event)"
+  class="ag-theme-balham" suppressHorizontalScroll="true" [paginationPageSize]="qtdRegistros" (paginationChanged)="atualizarPaginacao()"
+  suppressPaginationPanel="true">
+</ag-grid-angular>
+</div>
+
+<div class="row">
+  <div class="col-md-5 col-sm-12">
+
+    <div class="dataTables_info" id="DataTables_Table_0_info" role="status" aria-live="polite">
+
+      Exibindo {{primeiroRegistroPag}} até {{ultimoRegistroPag}} de {{totalRegistros}} registros
+
+    </div>
+
+  </div>
+
+  <div class="col-md-7 col-sm-12">
+    <div class="dataTables_paginate paging_bootstrap_full_number" id="DataTables_Table_0_paginate">
+      <ul class="pagination" style="visibility: visible;">
+
+        <li class="prev" [class.disabled]="paginaAtual == 1">
+          <a title="Primeiro" (click)="irParaPrimeiraPag()">
+            <i class="icon-first"></i>
+          </a>
+        </li>
+
+        <li class="prev" [class.disabled]="paginaAtual == 1">
+          <a title="Anterior" (click)="irParaPagAnterior()">
+            <i class="icon-previous2"></i>
+          </a>
+        </li>
+
+        <li class="active">
+          <a class="legitRipple">{{paginaAtual}}</a>
+        </li>
+
+        <li class="next" [class.disabled]="paginaAtual == qtdPaginas">
+          <a title="Próximo" (click)="irParaProxPag()">
+            <i class="icon-next2"></i>
+          </a>
+        </li>
+
+        <li class="next" [class.disabled]="paginaAtual == qtdPaginas">
+          <a title="Último" (click)="irParaUltimaPag()">
+            <i class="icon-last"></i>
+          </a>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+</div>
