@@ -6,6 +6,7 @@ import { TemplateRendererComponent } from 'src/app/shared/components/template-re
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { Action } from '../../shared/enuns/action.enum';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -16,7 +17,8 @@ import { Action } from '../../shared/enuns/action.enum';
 export class NoticeComponent implements OnInit, AfterViewInit {
 
   constructor(private noticeService: NoticeService,
-    private modalService: BsModalService){
+    private modalService: BsModalService,
+    private toastService: ToastrService){
   }
 
   modalRef: BsModalRef;
@@ -77,6 +79,13 @@ export class NoticeComponent implements OnInit, AfterViewInit {
 
   updateGrid(event){
     this.listNotices();
+  }
+
+  deleteNotice(notice: Notice){
+    this.noticeService.delete(notice).subscribe(()=>{
+      this.toastService.success('A operação foi realizada com sucesso');
+      this.listNotices();
+    });
   }
 
 }

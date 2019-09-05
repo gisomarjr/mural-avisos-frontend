@@ -12,7 +12,7 @@
   <div class="text-center">
       <app-modal [titleButton]="'Visualizar'" (eventModel)="updateGrid($event)" [typeButton]="'btn btn-success'" [notice]="row"></app-modal>
       <app-modal [titleButton]="'Editar'" (eventModel)="updateGrid($event)" [action]="actionSave" [typeButton]="'btn btn-warning'" [notice]="row"></app-modal>
-      <button type="button" style="margin-right: 2%" class="btn btn-danger">Excluir</button>
+      <button type="button" style="margin-right: 2%" (click)="deleteNotice(row)" class="btn btn-danger">Excluir</button>
   </div>
 </ng-template>
 
