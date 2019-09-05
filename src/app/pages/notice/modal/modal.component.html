@@ -1,3 +1,54 @@
-<p>
-  modal works!
-</p>
+<button 
+  type="button"
+  class="{{typeButton}}"
+  style="margin-right: 2%"
+  (click)="openModal()">{{titleButton}}
+</button>
+
+<ng-template #modal  class="modal fade" tabindex="-1"
+role="dialog" aria-labelledby="dialog-sizes-name1">
+    
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 id="dialog-sizes-name1" class="modal-title pull-left">
+                {{ action == consultEnum ? 'Consultar Aviso' : 'Salvar Aviso' }}
+            </h4>
+            
+            <button type="button" class="close pull-right" (click)="closeModal()" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div *ngIf="action == consultEnum && notice.visualization !== null" class="alert alert-success" role="alert">O seu aviso já foi visualizado :D</div>
+              <div *ngIf="action == consultEnum && notice.visualization === null" class="alert alert-danger" role="alert">O seu aviso ainda não foi visualizado :(</div>
+
+              <form #formNotice="ngForm">
+                  <div class="form-group">
+                      <label>Título</label>
+                      <input type="text" class="form-control" id="titulo" placeholder="Título"
+                      [(ngModel)]="notice.title" name="notice" #title="ngModel" [disabled]="action == consultEnum">
+                  </div>
+                  <div class="form-group">
+                      <label>Descrição</label>
+                      <textarea class="form-control" rows="3" placeholder="Descrição"
+                      [(ngModel)]="notice.description" name="description" #description="ngModel" [disabled]="action == consultEnum"></textarea>
+                  </div>
+                  <div class="form-group">
+                      <label>Data de Publicação:</label>
+                      <input type="text" class="form-control" id="dataPublicacao" placeholder="Data de Publicação"
+                       [(ngModel)]="notice.publication" name="publication" #publication="ngModel" disabled>
+                  </div>
+                  <div class="form-group">
+                      <label>Data de Visualização:</label>
+                      <input type="text" class="form-control" id="dataVisualizacao" placeholder="Data de Visualização"
+                       [(ngModel)]="notice.visualization" name="visualization" #title="ngModel" disabled>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-block" (click)="saveOrClose()" 
+                  [disabled]="!notice.title || !notice.description"> 
+                     {{action == consultEnum ? 'Voltar' : 'Salvar' }} 
+                    </button>
+                </form>
+
+          </div>
+        </div>
+</ng-template>

@@ -8,16 +8,18 @@ import { AngularHalModule } from 'angular4-hal';
 import { SharedModule } from './shared/shared.module';
 import { FormsModule } from '@angular/forms';
 import { NoticeComponent } from './pages/notice/notice.component';
+import { ModalComponent } from './pages/notice/modal/modal.component';
+import { NoticeModule } from './pages/notice/notice.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NoticeComponent
   ],
   imports: [
     BrowserModule,
     AngularHalModule.forRoot(),
     AppRoutingModule,
+    NoticeModule,
     FormsModule,
     SharedModule
   ],

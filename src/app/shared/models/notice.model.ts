@@ -1,4 +1,5 @@
 import { Resource } from 'angular4-hal';
+import * as moment from 'moment';
 
 /**
  * Notice resouce
@@ -9,7 +10,7 @@ export class Notice extends Resource {
   id: number;
   title: string;
   description: string;
-  publication: Date;
-  visualization: Date;
+  publication: any = moment().format('DD/MM/YYYY');;
+  visualization: any;
 
 }

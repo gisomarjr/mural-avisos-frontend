@@ -5,6 +5,7 @@ import { GridOptions } from 'ag-grid-community';
 import { TemplateRendererComponent } from 'src/app/shared/components/template-renderer/template-renderer.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
+import { Action } from '../../shared/enuns/action.enum';
 
 
 @Component({
@@ -16,7 +17,6 @@ export class NoticeComponent implements OnInit, AfterViewInit {
 
   constructor(private noticeService: NoticeService,
     private modalService: BsModalService){
-
   }
 
   modalRef: BsModalRef;
@@ -33,10 +33,9 @@ export class NoticeComponent implements OnInit, AfterViewInit {
 
   @ViewChild('modalNotice')
   modalNotice: TemplateRef<any>;
-
-
+  
   ngOnInit() {
-    this.noticeService.getAll().subscribe(notices => this.notices = notices);
+    this.listNotices();
   }
 
   ngAfterViewInit() {
@@ -61,8 +60,6 @@ export class NoticeComponent implements OnInit, AfterViewInit {
           ngTemplate: this.buttonView
         }
       },
-
-
     ]);
   }
 
@@ -70,13 +67,16 @@ export class NoticeComponent implements OnInit, AfterViewInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  openModalNotice() {
-    this.openModal(this.modalNotice);
-    //this.modalService.open(this.modalNotice, { scrollable: true });
+  get actionSave(){
+    return Action.SAVE
   }
 
-  closeModal(){
-    this.modalRef.hide();
+  listNotices(){
+    this.noticeService.getAll().subscribe(notices => this.notices = notices);
+  }
+
+  updateGrid(event){
+    this.listNotices();
   }
 
 }
