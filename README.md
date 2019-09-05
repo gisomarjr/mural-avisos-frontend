@@ -1,4 +1,11 @@
-# MuralAvisos
+# MURAL DE AVISOS - FRONTEND
+
+- Tecnologias aplicadas:
+	- Angular 7.2.4;
+	- Angular 4 Hal;
+	- Moment;
+	- Ngx Bootstrap;
+	- CSS Bootstrap;
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.2.4.
 
